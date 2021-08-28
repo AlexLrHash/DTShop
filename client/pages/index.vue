@@ -1,7 +1,27 @@
 <template>
-  <Tutorial/>
+
+  <div class="">
+    <!--  Header  -->
+      <Header></Header>
+    <!-- ======== -->
+
+    <!--  Main  -->
+      <Main></Main>
+    <!-- ====== -->
+
+    <!--  Footer   -->
+      <Footer></Footer>
+    <!-- ========= -->
+  </div>
+
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      user: ''
+    }
+  },
+}
 </script>
