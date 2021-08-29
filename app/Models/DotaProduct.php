@@ -15,10 +15,10 @@ class DotaProduct extends Model
         'price',
         'rarity',
         'image'
-        ];
+    ];
 
     protected $hidden = [
         'created_at',
         'updated_at',
-        ];
+    ];
 }
