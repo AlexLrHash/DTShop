@@ -46,10 +46,11 @@ class BasketController extends Controller
         $basket = Basket::where('token', $request->get('token'))->first();
         if (!$basket) {
             $basket = Basket::create([
-                'user_id' => Auth::user(),
+                'user_id' => Auth::user(),//1
                 'token' => Str::random(24)
             ]);
         }
+//
         if ($basket->products->contains($id)) {
             $pivotRaw = $basket->products->find($id)->pivot;
             $pivotRaw->count += 1;
