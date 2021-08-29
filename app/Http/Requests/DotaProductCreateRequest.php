@@ -24,7 +24,10 @@ class DotaProductCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required'
+            'name' => 'required|max:255',
+            'prise' => 'required',
+            'slot' => 'required|max:255',
+            'rarity' => 'required|max:255'
         ];
     }
 }

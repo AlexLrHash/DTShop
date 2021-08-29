@@ -9,7 +9,16 @@ class DotaProduct extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'slot', 'price','rarity','image'];
+    protected $fillable = [
+        'name',
+        'slot',
+        'price',
+        'rarity',
+        'image'
+        ];
 
-    protected $hidden = ['created_at', 'updated_at',];
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        ];
 }

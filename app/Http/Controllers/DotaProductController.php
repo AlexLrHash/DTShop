@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DotaProductCreateRequest;
-use App\Http\Requests\DotaProductRequest;
 use App\Http\Resources\DotaProductResource;
 use App\Models\DotaProduct;
 use Illuminate\Http\Request;
@@ -19,6 +18,7 @@ class DotaProductController extends Controller
     public function index()
     {
         $product = DotaProduct::get();
+
         return DotaProductResource::collection($product);
     }
 
@@ -51,6 +51,7 @@ class DotaProductController extends Controller
     public function show($id)
     {
         $product = DotaProduct::findOrFail($id);
+
         return DotaProductResource::make($product);
     }
 
@@ -61,12 +62,13 @@ class DotaProductController extends Controller
      * @param  \App\Models\DotaProduct  $dotaProduct
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(DotaProductCreateRequest $request,$id)
     {
         $products = DotaProduct::findOrFail($id);
-        $products->fill($request->except(['id']));
+        $products->fill($request->only(['name','slot','price','rarity','image']));
         $products->save();
-        return response()->json($products);
+
+        return DotaProductResource::make($products);
     }
 
     /**
@@ -78,6 +80,8 @@ class DotaProductController extends Controller
     public function destroy($id)
     {
         $products = DotaProduct::findOrFail($id);
-        if($products->delete()) return response(null, 204);
+        $products->delete();
+
+        return DotaProductResource::make($products);
     }
 }

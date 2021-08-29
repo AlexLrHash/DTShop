@@ -21,7 +21,7 @@ class DotaProductSeeder extends Seeder
             'price' => 100,
             'rarity' => 'rare',
             'image' => null,
-            'user_id' => Str::random(10),
+            'user_id' => 1,
         ]);
     }
 }
