@@ -26,7 +26,6 @@ Route::post('/basket/{basket}',[\App\Http\Controllers\BasketController::class, '
 Route::delete('/basket/{basket_id}',[\App\Http\Controllers\BasketController::class, 'destroy'])->name('basket.destroy');
 Route::get('/basket',[\App\Http\Controllers\BasketController::class, 'index'])->name('basket.index');
 
-
 Route::get('dota/products', [\App\Http\Controllers\DotaProductController::class, 'index'])->name('dota.index');
 Route::get('dota/products/{products}', [\App\Http\Controllers\DotaProductController::class, 'show'])->name('dota.show');
 Route::post('dota/products', [\App\Http\Controllers\DotaProductController::class, 'store'])->name('dota.store');
