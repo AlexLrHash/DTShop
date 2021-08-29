@@ -7,7 +7,7 @@
         <p class="lead text-muted">Интернет площадка где пользователи размещают свои скины, арканы, предметы и тд. на продажу. Если вы не авторизированны, нажмите сюда чтобы <NuxtLink to="login">войти</NuxtLink>. Если впервые на сайте, нажмите <NuxtLink to="register">сдесь</NuxtLink>.Чтобы перейти к покупке продукта, нужно либо нажать на кнопку "В корзину" ниже.</p>
         <p>
           <a href="#" class="btn btn-primary my-2">Подробнее</a>
-          <a href="#" class="btn btn-secondary my-2">Перейти на поиск</a>
+          <NuxtLink to="cart" class="btn btn-secondary my-2">В Корзину</NuxtLink>
         </p>
       </div>
     </section>
