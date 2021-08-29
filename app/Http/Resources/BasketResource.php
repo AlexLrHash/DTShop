@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class DotaProductResource extends JsonResource
+class BasketResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,12 +15,9 @@ class DotaProductResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'name' => $this->name,
-            'slot' => $this->slot,
-            'price' => $this->price,
-            'rarity'=>$this->rarity,
-            'image' => $this->image,
-            'baskets'=> $this->baskets,
+            'user' => $this->user,
+            'token'=> $this->token,
+            'products' => $this->products,
         ];
     }
 }
