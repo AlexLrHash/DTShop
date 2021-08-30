@@ -28,12 +28,12 @@ class BasketController extends Controller
      * @param  \App\Models\Basket  $basket
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function show(Request $request)
     {
         $basket = Basket::where('token', $request->get('token'))->first();
         if (!$basket) {
             $basket = Basket::create([
-                'user_id' => Auth::user(),
+                'user_id' => 1,
                 'token' => Str::random(24),
             ]);
         }
@@ -46,10 +46,11 @@ class BasketController extends Controller
         $basket = Basket::where('token', $request->get('token'))->first();
         if (!$basket) {
             $basket = Basket::create([
-                'user_id' => Auth::user(),
+                'user_id' => 1,//1Auth:user()
                 'token' => Str::random(24)
             ]);
         }
+//
         if ($basket->products->contains($id)) {
             $pivotRaw = $basket->products->find($id)->pivot;
             $pivotRaw->count += 1;
