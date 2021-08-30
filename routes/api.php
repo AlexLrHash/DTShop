@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('/discout/cards',[\App\Http\Controllers\DiscountCardController::class, 'index'])->name('discount.index');
+Route::get('/basket',[\App\Http\Controllers\BasketController::class, 'show'])->name('basket.show');
+Route::post('/basket/{basket}',[\App\Http\Controllers\BasketController::class, 'add'])->name('basket.add');
+Route::delete('/basket/{basket_id}',[\App\Http\Controllers\BasketController::class, 'destroy'])->name('basket.destroy');
+Route::get('/baskets',[\App\Http\Controllers\BasketController::class, 'index'])->name('basket.index');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
