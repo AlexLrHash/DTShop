@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/basket/{basket}',[\App\Http\Controllers\BasketController::class, 'show'])->name('basket.show');
+Route::get('/discout/cards',[\App\Http\Controllers\DiscountCardController::class, 'index'])->name('discount.index');
+Route::get('/basket',[\App\Http\Controllers\BasketController::class, 'show'])->name('basket.show');
 Route::post('/basket/{basket}',[\App\Http\Controllers\BasketController::class, 'add'])->name('basket.add');
 Route::delete('/basket/{basket_id}',[\App\Http\Controllers\BasketController::class, 'destroy'])->name('basket.destroy');
-Route::get('/basket',[\App\Http\Controllers\BasketController::class, 'index'])->name('basket.index');
+Route::get('/baskets',[\App\Http\Controllers\BasketController::class, 'index'])->name('basket.index');
 Route::get('dota/products', [\App\Http\Controllers\DotaProductController::class, 'index'])->name('dota.index');
 Route::get('dota/products/{products}', [\App\Http\Controllers\DotaProductController::class, 'show'])->name('dota.show');
 Route::post('dota/products', [\App\Http\Controllers\DotaProductController::class, 'store'])->name('dota.store');
