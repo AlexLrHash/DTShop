@@ -22,8 +22,10 @@ class DotaProduct extends Model
         'updated_at',
     ];
 
+
     public function baskets()
     {
         return $this->belongsToMany(Basket::class, 'basket_dota_products', 'product_id', 'basket_id');
     }
+
 }
