@@ -15,17 +15,17 @@
     <div class="album py-5 bg-light">
       <div class="container">
         <div class="row" v-if="products">
-          <div class="col-md-4" v-for="product in products">
+          <div class="col-md-4" v-for="product in products.data">
             <div class="card mb-4 box-shadow">
-              <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+              <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail">
               <div class="card-body">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text">{{ product.name }}. {{ product.slot }}</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" @click="addToCart(product.id)">В корзину</button>
                     <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                   </div>
-                  <small class="text-muted">9 mins</small>
+                  <small class="text-muted">{{ product.price }}$</small>
                 </div>
               </div>
             </div>
@@ -47,9 +47,27 @@ export default {
     }
   },
   async mounted() {
-      this.products = await fetch(
-        'http://localhost:8000/api/dota/items'
-      ).then(res => res.json()).catch(e => {console.log(e)})
+      this.products = await fetch('http://localhost:8000/api/dota/products', {
+
+      }).then(res => res.json()).catch(e => {console.log(e)})
+
+    this.user = await fetch('http://localhost:8000/api/user', {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": 'Bearer ' + '4|kYgMujMOYPLaLFAKHa06G2GnrALsOX4UhPw1WpzV'
+      },
+    }).then(res => res.json())
+  },
+  methods: {
+    async addToCart(productId) {
+      this.products = await fetch('http://localhost:8000/api/basket/' + productId, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+
+          })
+      }).then(res => res.json()).catch(e => {console.log(e)})
+    }
   }
 }
 </script>
